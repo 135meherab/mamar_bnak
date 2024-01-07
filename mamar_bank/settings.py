@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.onrender.com',
+    'https://mamar-bank-ovum.onrender.com/',
     'http://localhost:8000'
 ],
 
