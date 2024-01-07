@@ -199,10 +199,13 @@ class TransferMoneyView(LoginRequiredMixin, View):
                 destination_account = UserBankAccount.objects.get(account_no = to_account_no)
                 destination_account.balance += amount
                 destination_account.save()
+                send_transaction_mail(destination_account.user, amount, 'Receive Money Mail','transactions/receive_money_mail.html')
 
                 current_user_account = request.user.account
                 current_user_account.balance -= amount
                 current_user_account.save()
+                send_transaction_mail(request.user, amount, 'Send Money Mail','transactions/send_money_mail.html')
+
 
                 Transaction.objects.create(
                     account = current_user_account,

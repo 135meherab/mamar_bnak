@@ -1,5 +1,5 @@
 from typing import Any
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
 from .constants import ACCOUNT_TYPES, GENDERS
@@ -121,3 +121,6 @@ class UpdateSignUpForm(forms.ModelForm):
             user_address.save()
             
         return user
+
+
+
