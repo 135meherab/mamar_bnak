@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import environ
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,17 +83,22 @@ WSGI_APPLICATION = 'mamar_bank.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#    'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USER"),
+#         'PASSWORD': env("DB_PASSWORD"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#    } 
+# }
 DATABASES = {
-   'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-   } 
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://mamar_bank_i3go_user:2G4unQ6hSsqRb1euFyO3Wn7PfnNmCuL0@dpg-cmd8n8021fec73d16470-a.oregon-postgres.render.com/mamar_bank_i3go',
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
